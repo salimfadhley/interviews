@@ -20,10 +20,10 @@ class EggDropper(object):
         eggbox = [ Egg(eggStrength) for i in range(0, self.number_of_eggs) ]
         
         copied_eggbox = list(eggbox)
-        result = self.strategy.strategize( eggbox )
+        result = self.strategy.strategize( eggbox, self.building_size)
         
         number_of_drops = sum([egg.get_drop_count() for egg in copied_eggbox])
-        number_of_eggs_destroyed = sum([1 for egg in copied_eggbox if egg.__smashed])
+        number_of_eggs_destroyed = sum([1 for egg in copied_eggbox if egg.is_smashed()])
         
         if not result == eggStrength:
             raise IncorrectResult()
