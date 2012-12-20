@@ -1,10 +1,10 @@
 from eggdrop.egg import Egg
 from eggdrop.strategy import EggStrategy
-from eggdrop.exceptions import IncorrectResult, AttemptedToDropADesroyedEgg
+from eggdrop.exceptions import IncorrectResult
 
 class EggDropper(object):
     
-    def __init__(self, strategy, building_size, number_of_eggs):
+    def __init__(self, strategy, building_size, number_of_eggs=2):
         assert isinstance(strategy, EggStrategy), "Please provide a subclass of EggStrategy"
         assert isinstance(building_size, int), "Building size must be an integer"
         assert isinstance(number_of_eggs, int), "Number of eggs must be an integer"
@@ -17,7 +17,7 @@ class EggDropper(object):
         
     def run(self, eggStrength):
         # Provide the strategy with a box of eggs.
-        eggbox = [ Egg(eggStrength) for i in range(0, self.number_of_eggs) ]
+        eggbox = [ Egg(eggStrength) for _ in range(0, self.number_of_eggs) ]
         
         copied_eggbox = list(eggbox)
         result = self.strategy.strategize( eggbox, self.building_size)
