@@ -1,3 +1,4 @@
+import random
 from eggdrop.egg import Egg
 from eggdrop.strategy import EggStrategy
 from eggdrop.exceptions import IncorrectResult
@@ -15,7 +16,10 @@ class EggDropper(object):
         self.building_size = building_size
         self.number_of_eggs = number_of_eggs
         
-    def run(self, eggStrength):
+    def run(self, eggStrength=None):
+        if not eggStrength:
+            eggStrength = random.randint(1, self.building_size + 1)
+        
         # Provide the strategy with a box of eggs.
         eggbox = [ Egg(eggStrength) for _ in range(0, self.number_of_eggs) ]
         

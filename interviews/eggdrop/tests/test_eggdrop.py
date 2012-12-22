@@ -18,8 +18,6 @@ class TestEggDrop(TestCase):
                             return building_level - 1
         
         dropper = EggDropper( DumbStrategy(), 100, 1 )
-        number_of_drops, number_of_eggs_destroyed = dropper.run(50)
-        
-        print ("xxx")
-                        
+        print = dropper.run(50)
+
                         

@@ -6,9 +6,9 @@ class TrivialStrategy(EggStrategy):
         myEgg = eggbox.pop()
         
         for floor_no in range(1, building_size + 1):
-            result = myEgg.drop()
+            result = myEgg.drop(floor_no)
             if result:
                 return floor_no - 1
             
 if __name__ == "__main__":
-    EggDropper.run(TrivialStrategy(), 100)
+    print(EggDropper(TrivialStrategy(), 100).run(50))
