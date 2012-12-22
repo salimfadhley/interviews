@@ -1,7 +1,10 @@
 import random
+import collections
 from eggdrop.egg import Egg
 from eggdrop.strategy import EggStrategy
 from eggdrop.exceptions import IncorrectResult
+
+DropperResult = collections.namedtuple('DropperResult', ("strength", "number_of_drops", "number_destroyed"))
 
 class EggDropper(object):
     
@@ -32,4 +35,4 @@ class EggDropper(object):
         if not result == eggStrength:
             raise IncorrectResult()
         
-        return (number_of_drops, number_of_eggs_destroyed)
+        return DropperResult(result, number_of_drops, number_of_eggs_destroyed)
