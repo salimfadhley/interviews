@@ -7,6 +7,10 @@ class SlightlyBetterStrategy(EggStrategy):
     NAME = 'Slightly Better Strategy'
     
     def strategize(self, eggbox, building_size):
+        """
+        Binary chop until you get to your last egg,
+        and then count up
+        """
         lower_bound = 1
         upper_bound = building_size + 1
         

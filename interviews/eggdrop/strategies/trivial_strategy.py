@@ -7,6 +7,10 @@ class TrivialStrategy(EggStrategy):
     NAME = 'Really Dumb Strategy'
     
     def strategize(self, eggbox, building_size):
+        """
+        Count up from the bottom floor until you break your egg,
+        the correct floor must be the previous one you visited
+        """
         myEgg = eggbox.pop()
         
         for floor_no in range(1, building_size + 1):
