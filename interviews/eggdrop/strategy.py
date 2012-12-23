@@ -2,6 +2,13 @@ class EggStrategy(object):
     
     NAME = "Unnamed Strategy"
     
+    def execute_strategy(self, eggbox, building_size):
+        self.__eggbox = eggbox
+        return self.strategize(eggbox, building_size)
+    
+    def numIntactEggs(self):
+        return sum( [1 for e in self.__eggbox if not e.is_smashed()] )
+    
     def strategize(self, eggbox, building_size):
         return 0
         

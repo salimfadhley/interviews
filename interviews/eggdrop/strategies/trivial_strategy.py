@@ -1,7 +1,11 @@
+import pprint
 from eggdrop.strategy import EggStrategy
 from eggdrop.eggdropper import EggDropper
 
 class TrivialStrategy(EggStrategy):
+    
+    NAME = 'Really Dumb Strategy'
+    
     def strategize(self, eggbox, building_size):
         myEgg = eggbox.pop()
         
@@ -9,6 +13,7 @@ class TrivialStrategy(EggStrategy):
             result = myEgg.drop(floor_no)
             if result:
                 return floor_no - 1
+        return building_size
             
 if __name__ == "__main__":
-    print(EggDropper(TrivialStrategy(), 100).run(50))
+    pprint.pprint(EggDropper(TrivialStrategy(), 100).evaluate())
